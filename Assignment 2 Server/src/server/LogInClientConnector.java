@@ -30,7 +30,6 @@ public class LogInClientConnector implements Runnable
     {
       try
       {
-
         model.addLog("Waiting for a client....");
         Socket socket = welcomeSocket.accept();
         LogInClientHandler logInClientHandler = new LogInClientHandler(socket, model,group);
