@@ -9,4 +9,5 @@ public class LoginViewModel
   {
     this.model = model;
   }
+
 }
