@@ -36,8 +36,8 @@ public class LogInClientConnector implements Runnable
       {
         Socket socket = welcomeSocket.accept();
         System.out.println("Here is" + socket.getInetAddress().getHostAddress());
-        LogInClientHandler studentListClientHandler = new LogInClientHandler(socket, model);
-        Thread t = new Thread(LogInClientHandler);
+        LogInClientHandler logInClientHandler = new LogInClientHandler(socket, model);
+        Thread t = new Thread(logInClientHandler);
         t.setDaemon(true);
         t.start();
       }
