@@ -41,7 +41,7 @@ public class LoginClient implements ServerModel
     out.close();
   }
 
-  @Override public void verifyLog(String username, String password)
+  @Override public void verifyLog(String password)
   {
 
   }
