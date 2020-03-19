@@ -41,9 +41,12 @@ public class LoginClient implements ServerModel
     out.close();
   }
 
-  @Override public void verifyLog(String password)
+  @Override public boolean verifyLog(String password) throws IOException
   {
+    out.println(password);
+    String answer = in.readLine();
 
+    return answer.equals("Approved");
   }
 
 }

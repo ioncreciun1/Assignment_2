@@ -1,9 +1,20 @@
 package model;
 
+import mediator.LoginClient;
+import mediator.ServerModel;
+
+import java.io.IOException;
+
 public class ModelManager implements Model
 {
-  @Override public void verifyLog(String password)
+  private ServerModel serverModel;
+  public ModelManager()
   {
-    if(password.equals("")){}
+
+  }
+  @Override public boolean verifyLog(String password) throws IOException
+  {
+    this.serverModel = new LoginClient();
+return serverModel.verifyLog(password);
   }
 }

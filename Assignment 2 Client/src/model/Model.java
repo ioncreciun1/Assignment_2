@@ -1,6 +1,8 @@
 package model;
 
+import java.io.IOException;
+
 public interface Model
 {
-  public void verifyLog(String password);
+  boolean verifyLog(String password) throws IOException;
 }
