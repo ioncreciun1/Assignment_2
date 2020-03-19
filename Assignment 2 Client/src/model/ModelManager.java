@@ -15,6 +15,6 @@ public class ModelManager implements Model
   @Override public boolean verifyLog(String password) throws IOException
   {
     this.serverModel = new LoginClient();
-return serverModel.verifyLog(password);
+    return serverModel.verifyLog(password);
   }
 }

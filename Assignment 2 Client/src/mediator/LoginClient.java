@@ -9,7 +9,7 @@ import java.net.Socket;
 public class LoginClient implements ServerModel
 {
   public static final String HOST = "localhost";
-  public static final int PORT = 9875;
+  public static final int PORT = 5544;
   private String host;
   private int port;
   private Socket socket;

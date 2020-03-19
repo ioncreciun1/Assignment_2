@@ -9,7 +9,7 @@ import java.sql.SQLOutput;
 
 public class LogInClientConnector implements Runnable
 {
-  private int PORT = 6969;
+  private int PORT = 5544;
   private boolean running;
   private ServerSocket welcomeSocket;
   private Model model;
@@ -28,14 +28,16 @@ public class LogInClientConnector implements Runnable
 
   @Override public void run()
   {
+    System.out.println("Starting Server...");
     System.out.println("Waiting for client...");
 
     while(true)
     {
       try
       {
+
         Socket socket = welcomeSocket.accept();
-        System.out.println("Here is" + socket.getInetAddress().getHostAddress());
+        System.out.println("Here is " + socket.getInetAddress().getHostAddress());
         LogInClientHandler logInClientHandler = new LogInClientHandler(socket, model);
         Thread t = new Thread(logInClientHandler);
         t.setDaemon(true);

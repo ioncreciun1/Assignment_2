@@ -30,6 +30,16 @@ public class LogInClientHandler implements Runnable
 
   @Override public void run()
   {
-
+    while (true)
+    {
+      try
+      {
+        model.verifyLog("cum sa iau parola de la client???????????? din gui?");
+      }
+      catch (IOException e)
+      {
+        e.printStackTrace();
+      }
+    }
   }
 }
