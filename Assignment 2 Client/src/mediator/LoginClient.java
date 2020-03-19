@@ -28,9 +28,9 @@ public class LoginClient implements ServerModel
 
   @Override public void connect() throws IOException
   {
-    socket = new Socket(HOST,PORT);
-    in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-    out = new PrintWriter(socket.getOutputStream(),true);
+   // socket = new Socket(HOST,PORT);
+  //  in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+   // out = new PrintWriter(socket.getOutputStream(),true);
 
   }
 
@@ -43,10 +43,16 @@ public class LoginClient implements ServerModel
 
   @Override public boolean verifyLog(String password) throws IOException
   {
-    out.println(password);
-    String answer = in.readLine();
-
-    return answer.equals("Approved");
+    //out.println(password);
+    //String answer = in.readLine();
+    if(password.equals("111"))
+    {
+      System.out.println("I am here");
+      return true;
+    }
+    else
+      return  false;
+    //return answer.equals("Approved");
   }
 
 }
