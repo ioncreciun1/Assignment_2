@@ -1,5 +1,6 @@
 package view;
 
+import javafx.event.ActionEvent;
 import javafx.scene.layout.Region;
 import viewModel.ChatViewModel;
 import viewModel.LoginViewModel;
@@ -23,5 +24,10 @@ public class ChatViewController
   public Region getRoot()
   {
     return  root;
+  }
+
+  public void back()
+  {
+    viewHandler.openView("login");
   }
 }

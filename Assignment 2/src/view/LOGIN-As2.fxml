@@ -79,7 +79,7 @@
                   <Insets left="60.0" right="60.0" top="10.0" />
                </VBox.margin>
             </Pane>
-            <Label prefHeight="32.0" prefWidth="134.0" style="-fx-text-fill: rgba(1,113,255,1); -fx-font-weight: bold; -fx-border-color: rgba(1,113,255,1); -fx-border-width: 3px 0px 3px 0px;" text="       Sign Up">
+            <Label prefHeight="32.0" prefWidth="134.0" style="-fx-text-fill: rgba(1,113,255,1); -fx-font-weight: bold; -fx-border-color: rgba(1,113,255,1); -fx-border-width: 3px 0px 3px 0px;" text="      Oky Talky">
                <font>
                   <Font size="17.0" />
                </font>
