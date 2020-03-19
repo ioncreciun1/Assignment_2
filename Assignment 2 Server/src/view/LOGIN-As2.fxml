@@ -1,0 +1,87 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.*?>
+<?import javafx.scene.control.*?>
+<?import javafx.scene.image.Image?>
+<?import javafx.scene.image.ImageView?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.Font?>
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="518.0" prefWidth="399.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.LoginViewController">
+   <children>
+      <VBox alignment="TOP_CENTER" prefHeight="518.0" prefWidth="399.0" style="-fx-background-color: rgba(236,236,236,1);">
+         <children>
+            <ImageView fitHeight="150.0" fitWidth="200.0" pickOnBounds="true" preserveRatio="true">
+               <image>
+                  <Image url="@login_image.png" />
+               </image>
+               <VBox.margin>
+                  <Insets top="5.0" />
+               </VBox.margin>
+            </ImageView>
+            <Pane prefHeight="305.0" prefWidth="279.0" style="-fx-background-color: rgba(250,250,250,1); -fx-border-color: rgba(215,215,215,0.80); -fx-border-width: 1px 2px 2px 1px;">
+               <children>
+                  <VBox layoutY="-1.0" prefHeight="305.0" prefWidth="279.0">
+                     <children>
+                        <Label style="-fx-text-fill: gray;" text="Username">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="20.0" top="35.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Pane prefHeight="30.0" prefWidth="250.0">
+                           <children>
+                              <TextField prefHeight="30.0" prefWidth="240.0" />
+                           </children>
+                           <VBox.margin>
+                              <Insets left="20.0" top="5.0" />
+                           </VBox.margin>
+                        </Pane>
+                        <Label style="-fx-text-fill: gray;" text="Password">
+                           <font>
+                              <Font size="20.0" />
+                           </font>
+                           <VBox.margin>
+                              <Insets left="20.0" top="25.0" />
+                           </VBox.margin>
+                        </Label>
+                        <Pane prefHeight="30.0" prefWidth="279.0">
+                           <children>
+                              <PasswordField prefHeight="30.0" prefWidth="240.0" />
+                           </children>
+                           <VBox.margin>
+                              <Insets left="20.0" top="5.0" />
+                           </VBox.margin>
+                        </Pane>
+                        <Pane prefHeight="35.0" prefWidth="250.0">
+                           <children>
+                              <Button mnemonicParsing="false" onAction="#openChat" prefHeight="35.0" prefWidth="200.0" style="-fx-text-fill: white; -fx-background-color: rgba(1,113,255,1); -fx-font-weight: bold; -fx-background-radius: 0;" text="Log In">
+                                 <font>
+                                    <Font size="15.0" />
+                                 </font>
+                              </Button>
+                           </children>
+                           <VBox.margin>
+                              <Insets left="40.0" top="45.0" />
+                           </VBox.margin>
+                        </Pane>
+                     </children>
+                  </VBox>
+               </children>
+               <VBox.margin>
+                  <Insets left="60.0" right="60.0" top="10.0" />
+               </VBox.margin>
+            </Pane>
+            <Label prefHeight="32.0" prefWidth="134.0" style="-fx-text-fill: rgba(1,113,255,1); -fx-font-weight: bold; -fx-border-color: rgba(1,113,255,1); -fx-border-width: 3px 0px 3px 0px;" text="      Oky Talky">
+               <font>
+                  <Font size="17.0" />
+               </font>
+               <VBox.margin>
+                  <Insets top="7.0" />
+               </VBox.margin>
+            </Label>
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
