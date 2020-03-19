@@ -31,31 +31,25 @@ public class LoginViewController
     this.viewHandler = viewHandler;
     this.viewModel = viewModel;
     this.root = root;
+    username.textProperty().bindBidirectional(viewModel.usernameProperty());
     password.textProperty().bindBidirectional(viewModel.passwordProperty());
 
   }
   public void openChat() throws IOException
   {
 
-
-    if(password.getText().equals(""))
-    {
-      error.setText("Insert Password");
-    }
-    if(viewModel.verifyPass())
-      viewHandler.openView("chat");
-    }
-
-  public void verify(KeyEvent keyEvent) throws IOException
-  {
-
-    System.out.println(viewModel.verifyPass());
     if(!viewModel.verifyPass())
     {
       error.setText("Wrong password");
     }
+    else if(password.getText().equals(""))
+    {
+      error.setText("Insert Password");
+    }
     else {
       error.setText("Oki Talky");
     }
-  }
+    if(viewModel.verifyPass())
+      viewHandler.openView("chat");
+    }
 }

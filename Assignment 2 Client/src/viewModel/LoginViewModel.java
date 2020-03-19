@@ -4,9 +4,6 @@ import javafx.application.Platform;
 import javafx.beans.property.SimpleStringProperty;
 import javafx.beans.property.StringProperty;
 import model.Model;
-
-import java.beans.PropertyChangeEvent;
-import java.beans.PropertyChangeListener;
 import java.io.IOException;
 
 public class LoginViewModel
@@ -18,7 +15,7 @@ public class LoginViewModel
   public LoginViewModel(Model model)
   {
     this.model = model;
-    this.username = new SimpleStringProperty();
+    this.username = new SimpleStringProperty("");
     this.password = new SimpleStringProperty("");
     this.error = new SimpleStringProperty("Oki Talky");
   }
@@ -40,7 +37,7 @@ public class LoginViewModel
 
   public boolean verifyPass() throws IOException
   {
-    return model.verifyLog(password.get());
+    return model.verifyLog(password.get(),username.get());
   }
 
 }

@@ -4,5 +4,5 @@ import java.io.IOException;
 
 public interface Model
 {
-  boolean verifyLog(String password) throws IOException;
+  boolean verifyLog(String password,String name) throws IOException;
 }

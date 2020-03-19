@@ -9,7 +9,7 @@ import java.net.Socket;
 public class LoginClient implements ServerModel
 {
   public static final String HOST = "localhost";
-  public static final int PORT = 9875;
+  public static final int PORT = 1234;
   private String host;
   private int port;
   private Socket socket;
@@ -28,9 +28,9 @@ public class LoginClient implements ServerModel
 
   @Override public void connect() throws IOException
   {
-   // socket = new Socket(HOST,PORT);
-  //  in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
-   // out = new PrintWriter(socket.getOutputStream(),true);
+    socket = new Socket(HOST,PORT);
+    in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
+    out = new PrintWriter(socket.getOutputStream(),true);
 
   }
 
@@ -41,18 +41,13 @@ public class LoginClient implements ServerModel
     out.close();
   }
 
-  @Override public boolean verifyLog(String password) throws IOException
+  @Override public boolean verifyLog(String password,String name) throws IOException
   {
-    //out.println(password);
-    //String answer = in.readLine();
-    if(password.equals("111"))
-    {
-      System.out.println("I am here");
-      return true;
-    }
-    else
-      return  false;
-    //return answer.equals("Approved");
+
+    out.println(password);
+    out.println(name);
+    String answer = in.readLine();
+    return answer.equals("approved");
   }
 
 }
