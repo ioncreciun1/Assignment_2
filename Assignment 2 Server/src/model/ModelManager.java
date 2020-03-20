@@ -13,15 +13,6 @@ public class ModelManager implements Model
     this.converter = new Converter();
     property = new PropertyChangeSupport(this);
   }
-
-  @Override
-  public synchronized String convert(String source)
-  {
-    String reply = converter.toUpperCase(source);
-    addLog("Converting: " + source);
-    return reply;
-  }
-
   @Override
   public synchronized void addLog(String log)
   {
