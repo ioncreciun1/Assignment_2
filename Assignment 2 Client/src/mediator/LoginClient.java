@@ -44,6 +44,7 @@ public class LoginClient implements ServerModel
   @Override public boolean verifyLog(String password,String name) throws IOException
   {
 
+
     out.println(password);
     out.println(name);
     String answer = in.readLine();

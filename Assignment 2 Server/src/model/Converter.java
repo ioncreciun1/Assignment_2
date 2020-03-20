@@ -11,11 +11,6 @@ public class Converter
     this.list = new ArrayList<>();
   }
   
-  public String toUpperCase(String txt)
-  {
-    return txt.toUpperCase();
-  }
-  
   public void addLog(String txt)
   {
     list.add(txt);
