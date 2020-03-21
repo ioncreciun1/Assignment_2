@@ -31,14 +31,13 @@ public class LoginViewController
     this.viewHandler = viewHandler;
     this.viewModel = viewModel;
     this.root = root;
-    username.textProperty().bindBidirectional(viewModel.usernameProperty());
-    password.textProperty().bindBidirectional(viewModel.passwordProperty());
 
   }
   public void openChat() throws IOException
   {
 
-    if(!viewModel.verifyPass())
+    boolean pass = viewModel.verifyPass(password.getText(),username.getText());
+    if(!pass)
     {
       error.setText("Wrong password");
     }
@@ -49,7 +48,7 @@ public class LoginViewController
     else {
       error.setText("Oki Talky");
     }
-    if(viewModel.verifyPass())
+    if(pass)
       viewHandler.openView("chat");
     }
 }

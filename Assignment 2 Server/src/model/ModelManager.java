@@ -23,17 +23,26 @@ public class ModelManager implements Model
 
   @Override public boolean verifyLog(String request)
   {
-
     return  request.equals("111111");
   }
 
-  @Override public void addListener(PropertyChangeListener listener)
+  @Override public void addMessage(String message)
   {
-    property.addPropertyChangeListener(listener);
+    System.out.println("HOW MANY TIMES");
+    property.firePropertyChange("message", null, message);
   }
 
-  @Override public void removeListener(PropertyChangeListener listener)
+
+  @Override public void addListener(String propertyName,
+      PropertyChangeListener listener)
   {
-    property.removePropertyChangeListener(listener);
+
+    property.addPropertyChangeListener(propertyName,listener);
+  }
+
+  @Override public void removeListener(String propertyName,
+      PropertyChangeListener listener)
+  {
+    property.removePropertyChangeListener(propertyName,listener);
   }
 }

@@ -2,7 +2,6 @@ import javafx.application.Application;
 import javafx.stage.Stage;
 import model.Model;
 import model.ModelManager;
-import server.ChatServer;
 import server.LogInClientConnector;
 import view.ViewHandler;
 import viewmodel.ViewModelFactory;
@@ -18,7 +17,7 @@ public class MyApplication extends Application
     ViewHandler view = new ViewHandler(viewModelFactory);
     view.start(primaryStage);
     LogInClientConnector connector = new LogInClientConnector(model);
-    Thread t =new  Thread(connector);
+    Thread t = new  Thread(connector);
     t.start();
 
   }

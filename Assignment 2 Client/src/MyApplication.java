@@ -1,13 +1,17 @@
 import javafx.application.Application;
     import javafx.stage.Stage;
-    import model.Model;
+import mediator.LoginClient;
+import mediator.ServerModel;
+import model.Model;
     import model.ModelManager;
     import view.ViewHandler;
     import viewModel.ViewModelFactory;
 
+import java.io.IOException;
+
 public class MyApplication extends Application
 {
-  public void start(Stage primaryStage)
+  public void start(Stage primaryStage) throws IOException
   {
     Model model = new ModelManager();
     ViewModelFactory viewModelFactory = new ViewModelFactory(model);

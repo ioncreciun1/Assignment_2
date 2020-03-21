@@ -12,9 +12,8 @@ public class LogInClientConnector implements Runnable
   private boolean running;
   private ServerSocket welcomeSocket;
   private Model model;
-  private static ThreadGroup group = new ThreadGroup("ClientHandlerThreads");
 
-  public LogInClientConnector(Model model) throws IOException
+  public LogInClientConnector(Model model)
   {
     this.model = model;
   }
@@ -24,16 +23,16 @@ public class LogInClientConnector implements Runnable
     model.addLog("Starting Server...");
     welcomeSocket = new ServerSocket(PORT);
 
-
-    running = true;
-    while(running)
+    while(true)
     {
       try
       {
-        model.addLog("Waiting for a client....");
         Socket socket = welcomeSocket.accept();
-        LogInClientHandler logInClientHandler = new LogInClientHandler(socket, model,group);
-       logInClientHandler.start();
+
+        LogInClientHandler logInClientHandler = new LogInClientHandler(socket, model);
+        Thread thread = new Thread(logInClientHandler);
+        thread.setDaemon(true);
+       thread.start();
       }
       catch (IOException e)
       {
@@ -57,7 +56,7 @@ public class LogInClientConnector implements Runnable
   public void stop()
   {
     running = false;
-    closeAll();
+   // closeAll();
     try
     {
       welcomeSocket.close();
@@ -68,24 +67,24 @@ public class LogInClientConnector implements Runnable
     }
   }
 
-  public static boolean closeAll()
-  {
-    boolean closed = true;
-    LogInClientHandler[] threads = new LogInClientHandler[group
-        .activeCount()];
-    group.enumerate(threads);
-    for (LogInClientHandler t : threads)
-    {
-      try
-      {
-        t.close();
-      }
-      catch (Exception e)
-      {
-        closed = false;
-      }
-    }
-    return closed;
-  }
+//  public static boolean closeAll()
+//  {
+//    boolean closed = true;
+//    LogInClientHandler[] threads = new LogInClientHandler[group
+//        .activeCount()];
+//    group.enumerate(threads);
+//    for (LogInClientHandler t : threads)
+//    {
+//      try
+//      {
+//        t.close();
+//      }
+//      catch (Exception e)
+//      {
+//        closed = false;
+//      }
+//    }
+//    return closed;
+//  }
 
 }

@@ -10,7 +10,7 @@
 <?import javafx.scene.layout.VBox?>
 <?import javafx.scene.text.Font?>
 
-<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/11.0.1" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ChatViewController">
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="520.0" prefWidth="400.0" xmlns="http://javafx.com/javafx/8.0.171" xmlns:fx="http://javafx.com/fxml/1" fx:controller="view.ChatViewController">
    <children>
       <VBox prefHeight="520.0" prefWidth="400.0" style="-fx-background-color: rgba(236,236,236,1);">
          <children>
@@ -36,7 +36,7 @@
             </HBox>
             <VBox prefHeight="366.0" prefWidth="400.0" style="-fx-background-color: rgba(236,236,236,1);">
                <children>
-                  <ListView prefHeight="371.0" prefWidth="400.0" />
+                  <ListView fx:id="list" prefHeight="371.0" prefWidth="400.0" />
                </children>
             </VBox>
             <HBox alignment="CENTER_LEFT" prefHeight="73.0" prefWidth="400.0" style="-fx-background-color: rgba(250,250,250,1); -fx-border-color: rgba(215,215,215,0.50); -fx-border-width: 2px 0px 0px 0px;">
@@ -49,12 +49,12 @@
                         <Insets left="10.0" />
                      </HBox.margin>
                   </Label>
-                  <TextField prefHeight="32.0" prefWidth="293.0" promptText="Type your text here..." style="-fx-background-color: transparent; -fx-border-color: rgba(1,113,255,1); -fx-border-width: 0px 0px 2px 0px;">
+                  <TextField fx:id="text" prefHeight="32.0" prefWidth="293.0" promptText="Type your text here..." style="-fx-background-color: transparent; -fx-border-color: rgba(1,113,255,1); -fx-border-width: 0px 0px 2px 0px;">
                      <HBox.margin>
                         <Insets left="10.0" />
                      </HBox.margin>
                   </TextField>
-                  <Button mnemonicParsing="false" prefHeight="56.0" prefWidth="42.0" style="-fx-background-color: transparent; -fx-text-fill: rgba(1,113,255,1); -fx-font-weight: bold;" text="&gt;">
+                  <Button mnemonicParsing="false" onAction="#setText" prefHeight="56.0" prefWidth="42.0" style="-fx-background-color: transparent; -fx-text-fill: rgba(1,113,255,1); -fx-font-weight: bold;" text="&gt;">
                      <font>
                         <Font size="26.0" />
                      </font>
