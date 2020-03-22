@@ -1,7 +1,7 @@
 package mediator;
 
 import com.google.gson.Gson;
-
+import model.Message;
 
 import java.io.BufferedReader;
 import java.io.IOException;
@@ -27,14 +27,15 @@ public class ClientReciver implements Runnable
       try
       {
         String reply = in.readLine();
-
-        System.out.println("REPLY : " + reply);
-        if ("list".equalsIgnoreCase(reply))
+        Message message = gson.fromJson(reply, Message.class);
+        System.out.println(reply);
+        System.out.println("REPLY : " + message.getBody());
+        if ("list".equalsIgnoreCase(message.getBody()))
         {
 
         }
         else{
-          client.setMessage(reply);
+          client.setMessage(message.getBody());
         }
       }
       catch (IOException e)

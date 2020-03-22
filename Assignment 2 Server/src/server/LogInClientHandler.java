@@ -2,6 +2,7 @@ package server;
 
 import com.google.gson.Gson;
 import javafx.application.Platform;
+import model.Message;
 import model.Model;
 
 import java.beans.PropertyChangeEvent;
@@ -19,11 +20,13 @@ public class LogInClientHandler implements PropertyChangeListener, Runnable
   private PrintWriter out;
   private boolean running;
   private Model model;
+  private String user;
 
   private Gson gson;
 
   public LogInClientHandler(Socket socket, Model model) throws IOException
   {
+    gson = new Gson();
     this.running = false;
     this.socket = socket;
     this.model = model;
@@ -43,11 +46,11 @@ public class LogInClientHandler implements PropertyChangeListener, Runnable
        String request = in.readLine();
        System.out.println(request);
        String name = in.readLine();
-        System.out.println(socket);
-        System.out.println(out.checkError());
+       this.user = name;
+
       if (model.verifyLog(request))
       {
-        System.out.println("I am here");
+
         model.addLog("Client " + name + " Connected");
         out.println("approved");
         running = false;
@@ -72,8 +75,8 @@ public class LogInClientHandler implements PropertyChangeListener, Runnable
       {
         String message = in.readLine();
         model.addLog("Message: " + message);
-
-        model.addMessage(message);
+        Message request = gson.fromJson(message,Message.class);
+        model.addMessage(user + " : " + request.getBody());
       }
       catch (Exception e)
       {
@@ -101,11 +104,16 @@ public class LogInClientHandler implements PropertyChangeListener, Runnable
   @Override public void propertyChange(PropertyChangeEvent evt)
   {
     Platform.runLater(() -> {
+
       System.out.println(evt.getPropertyName() + " THIS IS HERE");
       switch (evt.getPropertyName())
       {
         case "message":
-          out.println(evt.getNewValue());
+          System.out.println(evt.getNewValue());
+          Message message = new Message("message",evt.getNewValue().toString());
+          System.out.println(message);
+          String json = gson.toJson(message);
+          out.println(json);
           break;
       }
     });

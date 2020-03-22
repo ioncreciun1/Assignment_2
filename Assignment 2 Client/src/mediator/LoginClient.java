@@ -1,6 +1,8 @@
 package mediator;
 
+import com.google.gson.Gson;
 import com.sun.scenario.effect.impl.sw.sse.SSEBlend_SRC_OUTPeer;
+import model.Message;
 import model.Model;
 
 import java.io.BufferedReader;
@@ -75,10 +77,13 @@ public class LoginClient implements ServerModel
 
   @Override public void sendMessage(String message) throws IOException
   {
+    Gson gson = new Gson();
     ClientReciver clientReciver = new ClientReciver(this,in);
     Thread thread = new Thread(clientReciver);
     thread.start();
-      out.println(message);
+    Message sentMessage = new Message("message",message);
+    String json = gson.toJson(sentMessage);
+      out.println(json);
 
 
   }
