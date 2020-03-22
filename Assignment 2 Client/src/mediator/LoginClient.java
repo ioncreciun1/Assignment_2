@@ -24,6 +24,7 @@ public class LoginClient implements ServerModel
   private PrintWriter out;
   private Model model;
   private boolean running;
+  private ClientReciver clientReciver;
   public LoginClient(String host,int port)
   {
     this.host = host;
@@ -52,13 +53,17 @@ public class LoginClient implements ServerModel
   {
     in = new BufferedReader(new InputStreamReader(socket.getInputStream()));
     out = new PrintWriter(socket.getOutputStream(),true);
+
   }
 
   @Override public boolean verifyLog(String password,String name) throws IOException
   {
     out.println(password);
     out.println(name);
-      String answer = in.readLine();
+    String answer = in.readLine();
+    clientReciver = new ClientReciver(this,in);
+    Thread thread = new Thread(clientReciver);
+    thread.start();
     running = true;
     return answer.equals("approved");
   }
@@ -78,9 +83,7 @@ public class LoginClient implements ServerModel
   @Override public void sendMessage(String message) throws IOException
   {
     Gson gson = new Gson();
-    ClientReciver clientReciver = new ClientReciver(this,in);
-    Thread thread = new Thread(clientReciver);
-    thread.start();
+
     Message sentMessage = new Message("message",message);
     String json = gson.toJson(sentMessage);
       out.println(json);

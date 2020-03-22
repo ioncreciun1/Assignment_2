@@ -19,6 +19,7 @@ public class ChatViewModel implements PropertyChangeListener
   {
     this.model = model;
     logs = FXCollections.observableArrayList();
+    logs.add("NOW YOU CAN CHAT WITH OTHER");
     model.addListener("message",this);
   }
   public ObservableList<String> getLogs()
@@ -33,7 +34,9 @@ public class ChatViewModel implements PropertyChangeListener
   public void propertyChange(PropertyChangeEvent evt)
   {
     Platform.runLater(() -> {
-      logs.add(0, evt.getNewValue() + "");
+
+      System.out.println(logs);
+      logs.add(1, evt.getNewValue() + "");
     });
   }
 
