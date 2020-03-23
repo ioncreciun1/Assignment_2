@@ -47,7 +47,7 @@ public class LoginViewController
       error.setText("Insert Password");
     }
     else {
-      error.setText("Oki Talky");
+      error.setText("Oky Talky");
     }
     if(viewModel.verifyPass())
       viewHandler.openView("chat");
