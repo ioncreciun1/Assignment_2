@@ -8,17 +8,19 @@ public class Message
   private String id;
   private String messageBody;
   private LocalDateTime dateTime;
+  private String user;
 
-  public Message(String id, String message)
+  public Message(String id, String message,String user)
   {
     this.dateTime = LocalDateTime.now();
     this.id = id;
     this.messageBody = message;
+    this.user = user;
   }
 
-  public Message(String message)
+  public Message(String message,String user)
   {
-    this("0", message);
+    this("0", message,user);
     setId("" + (int) (messageBody.hashCode() * Math.random()));
   }
 
@@ -41,6 +43,10 @@ public class Message
   public String getBody()
   {
     return messageBody;
+  }
+  public String getUser()
+  {
+    return user;
   }
 
   public LocalDateTime getDateTime()

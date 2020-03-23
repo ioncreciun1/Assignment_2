@@ -8,12 +8,15 @@ public class Message
   private String type;
   private String messageBody;
   private LocalDateTime dateTime;
+  private String user;
 
-  public Message(String type, String message)
+  public Message(String type, String message,String user)
   {
     this.dateTime = LocalDateTime.now();
     this.type = type;
     this.messageBody = message;
+    this.user = user;
+
   }
 
   public Message update()
@@ -30,6 +33,11 @@ public class Message
   public String getBody()
   {
     return messageBody;
+  }
+
+  public String getUser()
+  {
+    return user;
   }
 
   public LocalDateTime getDateTime()

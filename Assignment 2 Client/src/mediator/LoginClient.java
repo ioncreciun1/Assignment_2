@@ -24,6 +24,7 @@ public class LoginClient implements ServerModel
   private PrintWriter out;
   private Model model;
   private boolean running;
+  private String user;
   private ClientReciver clientReciver;
   public LoginClient(String host,int port)
   {
@@ -60,17 +61,28 @@ public class LoginClient implements ServerModel
   {
     out.println(password);
     out.println(name);
+    this.user = name;
     String answer = in.readLine();
-    clientReciver = new ClientReciver(this,in);
-    Thread thread = new Thread(clientReciver);
-    thread.start();
-    running = true;
-    return answer.equals("approved");
+    if(answer.equals("approved"))
+    {
+      clientReciver = new ClientReciver(this, in);
+      Thread thread = new Thread(clientReciver);
+      thread.start();
+      return true;
+    }
+    else {
+      return false;
+    }
   }
 
   public boolean isRunning()
   {
     return running;
+  }
+
+  public String getUsers(String signal)
+  {
+    return null;
   }
 
   //also send message. Look at other projects
@@ -84,7 +96,7 @@ public class LoginClient implements ServerModel
   {
     Gson gson = new Gson();
 
-    Message sentMessage = new Message("message",message);
+    Message sentMessage = new Message("message",message,user);
     String json = gson.toJson(sentMessage);
       out.println(json);
 

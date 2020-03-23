@@ -2,11 +2,13 @@ package model;
 
 import java.beans.PropertyChangeListener;
 import java.beans.PropertyChangeSupport;
+import java.util.ArrayList;
 
 public class ModelManager implements Model
 {
   private Converter converter;
   private PropertyChangeSupport property;
+  private ArrayList<String> list = new ArrayList<>();
 
   public ModelManager()
   {
@@ -18,7 +20,21 @@ public class ModelManager implements Model
   {
     String logValue = converter.getLogSize() + ": " + log;
     converter.addLog(logValue);
-    property.firePropertyChange("add", null, logValue);
+    property.firePropertyChange("add", null, log);
+  }
+  public void addUser(String user)
+  {
+    list.add(user);
+  }
+
+  public String getList()
+  {
+    String s ="";
+    for(int i=0;i<list.size()-1;i++){
+      s+=list.get(i) + " , ";
+    }
+    s+=list.get(list.size()-1);
+    return s;
   }
 
   @Override public boolean verifyLog(String request)
@@ -26,10 +42,13 @@ public class ModelManager implements Model
     return  request.equals("111111");
   }
 
-  @Override public void addMessage(String message)
+  @Override public void addMessage(String message,String user)
   {
-    System.out.println("HOW MANY TIMES");
+   // System.out.println("HOW MANY TIMES");
+    //System.out.println(message);
+    property.firePropertyChange("user", null, user);
     property.firePropertyChange("message", null, message);
+
   }
 
 

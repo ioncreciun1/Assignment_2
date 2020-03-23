@@ -66,25 +66,4 @@ public class LogInClientConnector implements Runnable
       //
     }
   }
-
-//  public static boolean closeAll()
-//  {
-//    boolean closed = true;
-//    LogInClientHandler[] threads = new LogInClientHandler[group
-//        .activeCount()];
-//    group.enumerate(threads);
-//    for (LogInClientHandler t : threads)
-//    {
-//      try
-//      {
-//        t.close();
-//      }
-//      catch (Exception e)
-//      {
-//        closed = false;
-//      }
-//    }
-//    return closed;
-//  }
-
 }

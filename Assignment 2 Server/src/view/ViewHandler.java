@@ -42,7 +42,7 @@ public class ViewHandler
     {
       title += root.getUserData();
     }
-    primaryStage.setTitle(title);
+    primaryStage.setTitle("CHAT SERVER");
     primaryStage.setScene(currentScene);
     primaryStage.setWidth(root.getPrefWidth());
     primaryStage.setHeight(root.getPrefHeight());
