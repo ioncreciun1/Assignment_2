@@ -87,7 +87,11 @@ public class LogInClientHandler implements PropertyChangeListener, Runnable
           String json  = gson.toJson(request);
           out.println(json);
         }
-        model.addMessage(request.getBody(),request.getUser());
+
+        else
+        {
+          model.addMessage(request.getBody(), request.getUser());
+        }
       }
       catch (Exception e)
       {

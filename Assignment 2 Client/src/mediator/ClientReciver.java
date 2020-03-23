@@ -32,6 +32,7 @@ public class ClientReciver implements Runnable
         {
 
           System.out.println(message.getBody() + " HERE IT IS");
+          client.setMessage("chatters");
         }
         else{
           client.setMessage(message.getUser() + " : " + message.getBody());
