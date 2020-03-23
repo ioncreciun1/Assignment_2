@@ -54,7 +54,7 @@ public class LogInClientHandler implements PropertyChangeListener, Runnable
       if (model.verifyLog(request))
       {
 
-        System.out.println(users);
+        model.addUser(user);
         model.addLog("Client " + name + " Connected");
         out.println("approved");
         running = false;
@@ -84,7 +84,7 @@ public class LogInClientHandler implements PropertyChangeListener, Runnable
         if(request.getBody().equals("chatters"))
         {
           System.out.println("I am here");
-          String json  = gson.toJson(request);
+          String json  = gson.toJson(new Message(model.getList(),"Chatters"));
           out.println(json);
         }
 
