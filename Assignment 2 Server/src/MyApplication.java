@@ -17,7 +17,7 @@ public class MyApplication extends Application
     ViewHandler view = new ViewHandler(viewModelFactory);
     view.start(primaryStage);
     LogInClientConnector connector = new LogInClientConnector(model);
-    Thread t = new Thread(connector);
+    Thread t = new  Thread(connector);
     t.start();
 
   }
