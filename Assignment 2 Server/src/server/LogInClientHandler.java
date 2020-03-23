@@ -45,10 +45,7 @@ public class LogInClientHandler implements PropertyChangeListener, Runnable
 
       try{
        String request = in.readLine();
-     //  System.out.println(request);
        String name = in.readLine();
-        //System.out.println(name);
-
        this.user = name;
 
       if (model.verifyLog(request))
@@ -61,7 +58,6 @@ public class LogInClientHandler implements PropertyChangeListener, Runnable
       }
       else
       {
-        //System.out.println("Here");
         model.addLog("Client " + name + " did not connect");
         out.println("denied");
       }
@@ -80,10 +76,8 @@ public class LogInClientHandler implements PropertyChangeListener, Runnable
         String message = in.readLine();
         model.addLog("Message: " + message);
         Message request = gson.fromJson(message,Message.class);
-        System.out.println(request.getBody().equals("chatters"));
         if(request.getBody().equals("chatters"))
         {
-          System.out.println("I am here");
           String json  = gson.toJson(new Message(model.getList(),"Chatters"));
           out.println(json);
         }

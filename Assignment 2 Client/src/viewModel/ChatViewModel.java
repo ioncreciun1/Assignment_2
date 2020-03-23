@@ -34,8 +34,6 @@ public class ChatViewModel implements PropertyChangeListener
   public void propertyChange(PropertyChangeEvent evt)
   {
     Platform.runLater(() -> {
-
-      System.out.println(logs);
       logs.add(1, evt.getNewValue() + "");
     });
   }

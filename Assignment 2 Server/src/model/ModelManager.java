@@ -44,13 +44,11 @@ public class ModelManager implements Model
 
   @Override public boolean verifyLog(String request)
   {
-    return  request.equals("111111");
+    return  request.equals("123456");
   }
 
   @Override public void addMessage(String message,String user)
   {
-   // System.out.println("HOW MANY TIMES");
-    //System.out.println(message);
     property.firePropertyChange("user", null, user);
     property.firePropertyChange("message", null, message);
 

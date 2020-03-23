@@ -30,15 +30,8 @@ public class ClientReciver implements Runnable
         Message message = gson.fromJson(reply, Message.class);
         if ("chatters".equalsIgnoreCase(message.getBody()))
         {
-
-          System.out.println(message.getBody() + " HERE IT IS");
           client.setMessage("chatters");
 
-        }
-        else if("close".equalsIgnoreCase(message.getBody()))
-        {
-          System.out.println("I am here");
-         // client.disconnect();
         }
         else{
           client.setMessage(message.getUser() + " : " + message.getBody());

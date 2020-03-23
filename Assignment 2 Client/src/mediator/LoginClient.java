@@ -75,17 +75,7 @@ public class LoginClient implements ServerModel
     }
   }
 
-  public boolean isRunning()
-  {
-    return running;
-  }
 
-  public String getUsers(String signal)
-  {
-    return null;
-  }
-
-  //also send message. Look at other projects
   @Override public void setMessage(String message) throws IOException
   {
 

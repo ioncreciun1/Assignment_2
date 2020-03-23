@@ -36,12 +36,6 @@ public class ModelManager implements Model
 
     return serverModel.verifyLog(password,name);
   }
-
-  @Override public void addMessage(String inputField)
-  {
-
-  }
-
   @Override public void addListener(String propertyName,
       PropertyChangeListener listener)
   {
