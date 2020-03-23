@@ -119,19 +119,12 @@ public class LogInClientHandler implements PropertyChangeListener, Runnable
   @Override public void propertyChange(PropertyChangeEvent evt)
   {
     Platform.runLater(() -> {
-
-     // System.out.println(evt.getPropertyName() + " THIS IS HERE");
       switch (evt.getPropertyName())
       {
         case "user" :
-          //System.out.println("I am here");
           this.user = evt.getNewValue().toString(); break;
         case "message":
-         // System.out.println(evt.getNewValue());
-         // System.out.println(user);
           Message message = new Message("message",evt.getNewValue().toString(),user);
-        //  System.out.println(message);
-
           String json = gson.toJson(message);
           out.println(json);
           break;

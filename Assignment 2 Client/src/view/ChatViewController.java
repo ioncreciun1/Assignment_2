@@ -36,7 +36,12 @@ public class ChatViewController
 
   public void setText(ActionEvent event) throws IOException
   {
-    viewModel.setMessage(text.getText());
-    text.setText("");
+    System.out.println(text.getText());
+    System.out.println(text.getText().equals(""));
+    if(!text.getText().equals(""))
+    {
+      viewModel.setMessage(text.getText());
+      text.setText("");
+    }
   }
 }
