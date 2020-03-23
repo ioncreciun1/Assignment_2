@@ -135,7 +135,6 @@ public class LogInClientHandler implements PropertyChangeListener, Runnable
           String json = gson.toJson(message);
           out.println(json);
           break;
-
       }
     });
   }
