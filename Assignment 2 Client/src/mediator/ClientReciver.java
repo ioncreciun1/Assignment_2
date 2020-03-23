@@ -28,14 +28,13 @@ public class ClientReciver implements Runnable
       {
         String reply = in.readLine();
         Message message = gson.fromJson(reply, Message.class);
-        System.out.println(reply);
-        System.out.println("REPLY : " + message.getBody());
         if ("chatters".equalsIgnoreCase(message.getBody()))
         {
 
+          System.out.println(message.getBody() + " HERE IT IS");
         }
         else{
-          client.setMessage(message.getBody());
+          client.setMessage(message.getUser() + " : " + message.getBody());
         }
       }
       catch (IOException e)

@@ -16,14 +16,6 @@
          <children>
             <HBox alignment="CENTER_LEFT" prefHeight="80.0" prefWidth="400.0" style="-fx-background-color: rgba(1,113,255,1); -fx-border-color: rgba(215,215,215,0.90); -fx-border-width: 0px 0px 2px 0px;">
                <children>
-                  <Button mnemonicParsing="false" onAction="#back" prefHeight="71.0" prefWidth="57.0" style="-fx-background-color: transparent; -fx-text-fill: white; -fx-font-weight: bold;" text="&lt;" textFill="WHITE">
-                     <HBox.margin>
-                        <Insets />
-                     </HBox.margin>
-                     <font>
-                        <Font size="33.0" />
-                     </font>
-                  </Button>
                   <Label prefHeight="47.0" prefWidth="206.0" style="-fx-text-fill: white; -fx-font-weight: bold;" text="Oky Talky" textFill="WHITE">
                      <HBox.margin>
                         <Insets left="60.0" />

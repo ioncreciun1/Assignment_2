@@ -26,10 +26,13 @@ public class ModelManager implements Model
     return  request.equals("111111");
   }
 
-  @Override public void addMessage(String message)
+  @Override public void addMessage(String message,String user)
   {
-    System.out.println("HOW MANY TIMES");
+   // System.out.println("HOW MANY TIMES");
+    //System.out.println(message);
+    property.firePropertyChange("user", null, user);
     property.firePropertyChange("message", null, message);
+
   }
 
 

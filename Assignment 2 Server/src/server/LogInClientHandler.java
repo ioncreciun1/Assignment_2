@@ -21,7 +21,7 @@ public class LogInClientHandler implements PropertyChangeListener, Runnable
   private boolean running;
   private Model model;
   private String user;
-
+  private String users ="";
   private Gson gson;
 
   public LogInClientHandler(Socket socket, Model model) throws IOException
@@ -33,6 +33,7 @@ public class LogInClientHandler implements PropertyChangeListener, Runnable
     in = new BufferedReader(
         new InputStreamReader(this.socket.getInputStream()));
     this.model.addListener("message", this);
+    this.model.addListener("user", this);
     out = new PrintWriter(this.socket.getOutputStream(), true);
   }
 
@@ -44,20 +45,23 @@ public class LogInClientHandler implements PropertyChangeListener, Runnable
 
       try{
        String request = in.readLine();
-       System.out.println(request);
+     //  System.out.println(request);
        String name = in.readLine();
+        //System.out.println(name);
+
        this.user = name;
 
       if (model.verifyLog(request))
       {
 
+        System.out.println(users);
         model.addLog("Client " + name + " Connected");
         out.println("approved");
         running = false;
       }
       else
       {
-        System.out.println("Here");
+        //System.out.println("Here");
         model.addLog("Client " + name + " did not connect");
         out.println("denied");
       }
@@ -76,7 +80,14 @@ public class LogInClientHandler implements PropertyChangeListener, Runnable
         String message = in.readLine();
         model.addLog("Message: " + message);
         Message request = gson.fromJson(message,Message.class);
-        model.addMessage(user + " : " + request.getBody());
+        System.out.println(request.getBody().equals("chatters"));
+        if(request.getBody().equals("chatters"))
+        {
+          System.out.println("I am here");
+          String json  = gson.toJson(request);
+          out.println(json);
+        }
+        model.addMessage(request.getBody(),request.getUser());
       }
       catch (Exception e)
       {
@@ -105,16 +116,22 @@ public class LogInClientHandler implements PropertyChangeListener, Runnable
   {
     Platform.runLater(() -> {
 
-      System.out.println(evt.getPropertyName() + " THIS IS HERE");
+     // System.out.println(evt.getPropertyName() + " THIS IS HERE");
       switch (evt.getPropertyName())
       {
+        case "user" :
+          //System.out.println("I am here");
+          this.user = evt.getNewValue().toString(); break;
         case "message":
-          System.out.println(evt.getNewValue());
-          Message message = new Message("message",evt.getNewValue().toString());
-          System.out.println(message);
+         // System.out.println(evt.getNewValue());
+         // System.out.println(user);
+          Message message = new Message("message",evt.getNewValue().toString(),user);
+        //  System.out.println(message);
+
           String json = gson.toJson(message);
           out.println(json);
           break;
+
       }
     });
   }

@@ -33,10 +33,6 @@ public class ChatViewController
     return  root;
   }
 
-  public void back()
-  {
-    viewHandler.openView("login");
-  }
 
   public void setText(ActionEvent event) throws IOException
   {
