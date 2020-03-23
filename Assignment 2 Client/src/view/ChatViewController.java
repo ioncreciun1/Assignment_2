@@ -1,8 +1,11 @@
 package view;
 
+import javafx.application.Platform;
 import javafx.event.ActionEvent;
+import javafx.scene.Scene;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.Region;
+import javafx.stage.Stage;
 import viewModel.ChatViewModel;
 import javafx.scene.control.ListView;
 
@@ -36,11 +39,18 @@ public class ChatViewController
 
   public void setText(ActionEvent event) throws IOException
   {
-    System.out.println(text.getText());
-    System.out.println(text.getText().equals(""));
+
     if(!text.getText().equals(""))
     {
       viewModel.setMessage(text.getText());
+      if(text.getText().equalsIgnoreCase("close"))
+      {
+        System.out.println("STOP...");
+        Stage stage = (Stage)text.getScene().getWindow();
+        System.out.println(stage);
+        stage.close();
+
+      }
       text.setText("");
     }
   }

@@ -27,6 +27,11 @@ public class ModelManager implements Model
     list.add(user);
   }
 
+  @Override public void removeUser(String user)
+  {
+    list.remove(user);
+  }
+
   public String getList()
   {
     String s ="";

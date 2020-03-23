@@ -36,19 +36,14 @@ public class LoginViewController
   public void openChat() throws IOException
   {
 
-    boolean pass = viewModel.verifyPass(password.getText(),username.getText());
-    if(!pass)
+    boolean pass = viewModel.verifyPass(password.getText(), username.getText());
+    if (!pass)
     {
       error.setText("Wrong password");
     }
-    else if(password.getText().equals(""))
+    else
     {
-      error.setText("Insert Password");
-    }
-    else {
-      error.setText("Oky Talky");
-    }
-    if(pass)
       viewHandler.openView("chat");
     }
+  }
 }

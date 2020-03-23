@@ -11,4 +11,5 @@ public interface Model extends NamedPropertyChangeSubject
   void addMessage(String message,String user);
   String getList();
   void addUser(String user);
+  void removeUser(String user);
 }
