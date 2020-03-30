@@ -31,19 +31,17 @@ public class LoginViewController
     this.viewHandler = viewHandler;
     this.viewModel = viewModel;
     this.root = root;
+    username.textProperty().bindBidirectional(viewModel.usernameProperty());
+    password.textProperty().bindBidirectional(viewModel.passwordProperty());
+    error.textProperty().bind(viewModel.errorProperty());
 
   }
   public void openChat() throws IOException
   {
 
-    boolean pass = viewModel.verifyPass(password.getText(), username.getText());
-    if (!pass)
-    {
-      error.setText("Wrong password");
-    }
-    else
-    {
-      viewHandler.openView("chat");
-    }
+   if(viewModel.verifyPass())
+   {
+     viewHandler.openView("chat");
+   }
   }
 }

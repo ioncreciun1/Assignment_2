@@ -1,7 +1,6 @@
 package server;
 
 import com.google.gson.Gson;
-import javafx.application.Platform;
 import model.Message;
 import model.Model;
 
@@ -115,7 +114,7 @@ public class LogInClientHandler implements PropertyChangeListener, Runnable
 
   @Override public void propertyChange(PropertyChangeEvent evt)
   {
-    Platform.runLater(() -> {
+
       switch (evt.getPropertyName())
       {
         case "user" :
@@ -126,6 +125,5 @@ public class LogInClientHandler implements PropertyChangeListener, Runnable
           out.println(json);
           break;
       }
-    });
   }
 }

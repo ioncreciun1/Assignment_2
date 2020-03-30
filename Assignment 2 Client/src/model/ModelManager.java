@@ -22,7 +22,6 @@ public class ModelManager implements Model
 
   @Override public void setMessage(String message) throws IOException
   {
-
     property.firePropertyChange("message", null, message);
   }
 
